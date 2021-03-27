@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Body from "./components/Body";
+import Modal from "./components/Modal";
+import "./Body.css";
+import "./Modal.css";
+import "./Header.css";
+import { STUDENTS } from "./StudentData";
 
 function App() {
+  const [students, setStudents] = useState(STUDENTS);
+  const [buttonID, setButtonID] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
+
+  function removeStudent(studentID) {
+    setModalVisible(true)
+    setButtonID(studentID)
+  }
+  function confirmDelete(){
+    const deleteStudents = students.filter(
+      (student) => student.id !== buttonID
+    );
+    setStudents(deleteStudents);
+    setModalVisible(false)
+  }
+
+  function cancleDelete(){
+    setModalVisible(false)
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Header></Header>
+      <Body students={students} removeStudent={removeStudent}></Body>
+      {modalVisible && <Modal message="Are you sure to delete?" confirmDelete={confirmDelete} cancleDelete={cancleDelete}/>}
+    </main>
   );
 }
 
