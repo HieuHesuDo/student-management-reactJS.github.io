@@ -1,22 +1,25 @@
-export default function Body({ students, removeStudent }) {
+export default function Body({ students, removeStudent, onAdd }) {
   const studentList = students.map((student) => (
-    <tr>
+    <tbody>
+    <tr key={student.id}>
       <td>{student.name}</td>
       <td>{student.birth}</td>
       <td>{student.email}</td>
       <td>{student.phone}</td>
       <td>
-        <button onClick={() => removeStudent(student.id)}>Xóa</button>
+        <button className="delete" onClick={() => removeStudent(student.id)}>Xóa</button>
         <button className="edit">Sửa</button>
       </td>
     </tr>
+    </tbody>
   ));
 
   return (
     <div className="container">
       <div className="table">
-        <button>Thêm học viên</button>
+        <button onClick={onAdd} className='addStudent'>Thêm học viên</button>
         <table id="students">
+          <thead>
           <tr>
             <th>Họ Tên</th>
             <th>Năm Sinh</th>
@@ -24,6 +27,7 @@ export default function Body({ students, removeStudent }) {
             <th>Số điện thoại</th>
             <th></th>
           </tr>
+          </thead>
           {studentList}
         </table>
       </div>

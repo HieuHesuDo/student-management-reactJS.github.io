@@ -1,4 +1,4 @@
-button {
+.addStudent {
     padding: 10px;
     color: #fff;
     background-color: #00A751;
@@ -51,9 +51,25 @@ button {
 }
 
 td button {
-  margin-right: 20px;
+  margin: 10px 10px;
 }
 
 td .edit{
-  background-color: rgb(255, 72, 72);
+  background-color: rgb(9, 90, 196);
+  padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline-color: transparent;
+}
+
+td .delete{
+  padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline-color: transparent;
+  background-color: red;
 }
