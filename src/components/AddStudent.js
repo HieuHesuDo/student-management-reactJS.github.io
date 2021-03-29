@@ -61,7 +61,7 @@ const AddStudent = ({ onAdd, cancelAddStudent }) => {
           />
         </div>
 
-        <input type="submit" value="Thêm học sinh" className="btn" />
+        <input type="submit" value="Thêm học viên" className="btn" />
       </form>
     </div>
   );
